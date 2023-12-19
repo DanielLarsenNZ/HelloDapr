@@ -1,0 +1,12 @@
+bin
+obj
+*.user
+.vs
+appsettings.Development.json
+local.settings.json
+serviceDependencies.local.json
+test.local.http
+apim-policies-examples.xml
+
+# temporary until root key is removed
+statestore.yaml

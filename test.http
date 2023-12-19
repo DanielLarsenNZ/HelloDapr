@@ -1,0 +1,50 @@
+PUT http://localhost:3500/v1.0/state/statestore-dev
+Content-Type: application/json
+
+[
+    { 
+        "key": "def1605", 
+        "value": "abc",
+        "etag": "123",
+        "options": {
+            "concurrency": "first-write"
+          }
+    }
+]
+
+###
+GET http://localhost:3500/v1.0/state/statestore-dev/def1559
+
+### GET Wallet
+GET https://localhost:7023/wallets/ghi3
+
+### POST Wallet
+POST https://localhost:7023/wallets
+Content-Type: application/json
+
+{
+  "id": "ghi3",
+  "name": "G H I",
+  "balance": 0
+}
+
+### PUT Wallet
+PUT https://localhost:7023/wallets/ghi3
+Content-Type: application/json
+If-Match: "0200d3f9-0000-1a00-0000-657fa5700000"
+
+{
+  "id": "abc1554",
+  "name": "A B C",
+  "balance": 25
+}
+
+### Wallet Deposit
+PUT https://localhost:7023/wallets/ghi3/deposit
+Content-Type: application/json
+
+{
+  "walletId": "ghi3",
+  "amount": 10.00,
+  "description": "Deposit $10"
+}
