@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloDapr.Wallets", "HelloDapr.Wallets\HelloDapr.Wallets.csproj", "{59B5EBED-7BF7-4977-969E-8C6FF9261EE9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HelloDapr.Wallets", "HelloDapr.Wallets\HelloDapr.Wallets.csproj", "{59B5EBED-7BF7-4977-969E-8C6FF9261EE9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloDapr.AML", "HelloDapr.AML\HelloDapr.AML.csproj", "{A99D1D8F-D106-490C-8E63-E426CCE79FB8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloDapr.Common", "HelloDapr.Common\HelloDapr.Common.csproj", "{8E5758D8-856F-444E-BBE3-BBA0603FEE4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloDapr.Payments", "HelloDapr.Payments\HelloDapr.Payments.csproj", "{2D86CBAC-C3B2-49A7-923E-8CDDFC72A881}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{59B5EBED-7BF7-4977-969E-8C6FF9261EE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59B5EBED-7BF7-4977-969E-8C6FF9261EE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59B5EBED-7BF7-4977-969E-8C6FF9261EE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A99D1D8F-D106-490C-8E63-E426CCE79FB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A99D1D8F-D106-490C-8E63-E426CCE79FB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A99D1D8F-D106-490C-8E63-E426CCE79FB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A99D1D8F-D106-490C-8E63-E426CCE79FB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E5758D8-856F-444E-BBE3-BBA0603FEE4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E5758D8-856F-444E-BBE3-BBA0603FEE4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E5758D8-856F-444E-BBE3-BBA0603FEE4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E5758D8-856F-444E-BBE3-BBA0603FEE4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D86CBAC-C3B2-49A7-923E-8CDDFC72A881}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D86CBAC-C3B2-49A7-923E-8CDDFC72A881}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D86CBAC-C3B2-49A7-923E-8CDDFC72A881}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D86CBAC-C3B2-49A7-923E-8CDDFC72A881}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

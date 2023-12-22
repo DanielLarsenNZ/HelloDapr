@@ -4,8 +4,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers().AddDapr((client) =>
 {
-    client.UseGrpcEndpoint("http://localhost:55600");
-    client.UseHttpEndpoint("http://localhost:3600");
+    client.UseGrpcEndpoint("http://localhost:55700");
+    client.UseHttpEndpoint("http://localhost:3700");
 });
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

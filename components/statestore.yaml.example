@@ -1,0 +1,16 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: statestore-dev
+spec:
+  type: state.azure.cosmosdb
+  version: v1
+  metadata:
+  - name: url
+    value: https://dlarsen-plexure-pforge-cosmos.documents.azure.com:443/
+  - name: masterKey
+    value: [Cosmos Master Key]
+  - name: database
+    value: hellodapr
+  - name: collection
+    value: wallets

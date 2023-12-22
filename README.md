@@ -4,7 +4,11 @@
 ## Pros and gotchas
 
 * GRPC built in and by default.
-* Client encryption built in. 
+* mTLS and Client encryption built in. 
+* OpenAPI
+* Transactional outbox pattern built-in.
+* Async / await + cancellation tokens
+* Retry built-in.
 * Highly opinionated API for distributed computing.
 * PUTS will upsert and this behaviour cannot be overidden, even at the API level.
 
@@ -15,10 +19,20 @@
 
 ##  Getting started
 
+Create component YAMLs, update connection strings and keys.
+
+```powershell
+copy ./components/pubsub.yaml.example ./components/pubsub.yaml
+copy ./components/statestore.yaml.example ./statestore/pubsub.yaml
 ```
-cd [this folder]
-dapr run --app-id hellodapr --dapr-http-port 3500 --dapr-grpc-port 55417 --resources-path ./components
+
+Start the DAPR apps
+
+```powershell
+./run-dapr-local.ps1
 ```
+
+Now run the Visual Studio solution (./src/HelloDapr.sln) - start all projects.
 
 ## Helpful docs
 

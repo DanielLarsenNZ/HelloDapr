@@ -10,3 +10,4 @@ apim-policies-examples.xml
 
 # temporary until root key is removed
 statestore.yaml
+pubsub.yaml

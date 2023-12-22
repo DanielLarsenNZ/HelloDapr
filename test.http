@@ -13,38 +13,85 @@ Content-Type: application/json
 ]
 
 ###
+POST http://localhost:3500/v1.0/invoke/hellodapr-aml/method/aml/check
+Content-Type: application/json
+
+{
+  "partyWalletId": "abc",
+  "counterpartyWalletId": "def",
+  "amount": 10.00,
+  "description": "Deposit $10"
+}
+
+###
+POST https://127.0.0.1:7099/aml/check
+Content-Type: application/json
+
+{
+  "partyWalletId": "abc",
+  "counterpartyWalletId": "def",
+  "amount": 10.00,
+  "description": "Deposit $10"
+}
+
+
+
+###
 GET http://localhost:3500/v1.0/state/statestore-dev/def1559
 
 ### GET Wallet
-GET https://localhost:7023/wallets/ghi3
+GET https://localhost:7023/wallets/def
 
 ### POST Wallet
 POST https://localhost:7023/wallets
 Content-Type: application/json
 
 {
-  "id": "ghi3",
-  "name": "G H I",
-  "balance": 0
+  "id": "def",
+  "name": "D E F",
+  "balance": 100
 }
 
 ### PUT Wallet
-PUT https://localhost:7023/wallets/ghi3
+PUT https://localhost:7023/wallets/abc
 Content-Type: application/json
-If-Match: "0200d3f9-0000-1a00-0000-657fa5700000"
+If-Match: "0500126d-0000-1a00-0000-6584b3ec0000"
 
 {
-  "id": "abc1554",
+  "id": "abc",
   "name": "A B C",
-  "balance": 25
+  "balance": 10
 }
 
 ### Wallet Deposit
-PUT https://localhost:7023/wallets/ghi3/deposit
+PUT https://localhost:7023/wallets/abc/deposit
 Content-Type: application/json
 
 {
-  "walletId": "ghi3",
+  "walletId": "abc",
   "amount": 10.00,
   "description": "Deposit $10"
 }
+
+### Make a payment
+POST https://localhost:7125/payments
+Content-Type: application/json
+
+{
+  "partyWalletId": "abc",
+  "counterpartyWalletId": "def",
+  "amount": 50.00,
+  "description": "Pay def $50"
+}
+
+###
+POST http://localhost:5225/aml/check
+Content-Type: application/json
+
+{
+  "partyWalletId": "abc1",
+  "counterpartyWalletId": "def",
+  "amount": 10.00,
+  "description": "Deposit $10"
+}
+

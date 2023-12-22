@@ -2,7 +2,7 @@
 
 namespace HelloDapr.Wallets
 {
-    public class Deposit
+    public class DepositModel
     {
         [Required]
         public string WalletId { get; set; }

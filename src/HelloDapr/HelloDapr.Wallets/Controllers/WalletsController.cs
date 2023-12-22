@@ -1,8 +1,8 @@
 ﻿using Dapr;
 using Dapr.Client;
+using HelloDapr.Common;
+using HelloDapr.Models;
 using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace HelloDapr.Wallets.Controllers
 {
@@ -11,6 +11,12 @@ namespace HelloDapr.Wallets.Controllers
     public class WalletsController : ControllerBase
     {
         const string StateStore = "statestore-dev";
+        readonly ILogger<WalletsController> _logger;
+
+        public WalletsController(ILogger<WalletsController> logger)
+        {
+            _logger = logger;
+        }
 
         #region CRUD actions
 
@@ -99,24 +105,23 @@ namespace HelloDapr.Wallets.Controllers
 
         #region Business actions
 
-        [HttpPut("{id}/deposit")]
+        [HttpPut("deposit")]
         public async Task<ActionResult> Deposit(
-            string id,
-            [FromBody] Deposit deposit,
+            [FromBody] DepositModel deposit,
             [FromServices] DaprClient dapr,
             CancellationToken cancellationToken)
         {
             (Wallet wallet, string etag) = await dapr.GetStateAndETagAsync<Wallet>(
-                StateStore, 
-                id, 
-                consistencyMode: ConsistencyMode.Strong, 
+                StateStore,
+                deposit.WalletId,
+                consistencyMode: ConsistencyMode.Strong,
                 cancellationToken: cancellationToken);
 
-            wallet.Balance += deposit.Amount;
+            wallet.Credit(deposit.Amount);
 
             if (!await dapr.TrySaveStateAsync(
                 StateStore,
-                id,
+                deposit.WalletId,
                 wallet,
                 etag,
                 stateOptions: new StateOptions { Concurrency = ConcurrencyMode.FirstWrite, Consistency = ConsistencyMode.Strong },
@@ -128,6 +133,33 @@ namespace HelloDapr.Wallets.Controllers
             return NoContent();
         }
 
+        [HttpPut("withdraw")]
+        public async Task<ActionResult> Withdraw(
+            [FromBody] WithdrawalModel withdrawal,
+            [FromServices] DaprClient dapr,
+            CancellationToken cancellationToken)
+        {
+            (Wallet wallet, string etag) = await dapr.GetStateAndETagAsync<Wallet>(
+                StateStore,
+                withdrawal.WalletId,
+                consistencyMode: ConsistencyMode.Strong,
+                cancellationToken: cancellationToken);
+
+            wallet.Debit(withdrawal.Amount);
+
+            if (!await dapr.TrySaveStateAsync(
+                StateStore,
+                withdrawal.WalletId,
+                wallet,
+                etag,
+                stateOptions: new StateOptions { Concurrency = ConcurrencyMode.FirstWrite, Consistency = ConsistencyMode.Strong },
+                cancellationToken: cancellationToken))
+            {
+                return Conflict();
+            }
+
+            return NoContent();
+        }
 
         #endregion
     }
