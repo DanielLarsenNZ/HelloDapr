@@ -31,7 +31,7 @@ Create component YAMLs, update connection strings and keys.
 
 ```powershell
 copy ./components/pubsub.yaml.example ./components/pubsub.yaml
-copy ./components/statestore.yaml.example ./statestore/pubsub.yaml
+copy ./components/statestore.yaml.example ./components/statestore.yaml
 ```
 
 Start the DAPR apps
